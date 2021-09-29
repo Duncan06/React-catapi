@@ -1,0 +1,69 @@
+.wrapper {
+    display: grid;
+    place-items: center;
+    width: 400px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr .1fr .1fr  .1fr .1fr;
+    border: 10px solid teal;
+    background-color: paleturquoise;
+    margin-left: 15%;
+    box-shadow: 0 0 13px rgba(0, 0, 0, .5);
+ }
+ 
+ .ImageDisplay, .catInfo {
+    display: flex;
+    grid-column: 1 / -1;
+ }
+ 
+ .ImageDisplay {
+    flex-direction: column;
+    margin-top: 1.75rem;
+    grid-row: span 1;
+    width: 375px;
+    max-height: 280px;
+    overflow: hidden;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    object-fit: cover;
+ }
+ 
+ #img {
+    width: 100%;
+ }
+ 
+ .catInfo {
+    grid-column: 1 / -1;
+    font-family: cursive;
+    font-size: .9rem;
+    gap: .5rem;
+ }
+ 
+ .description {
+    grid-column: 1 / -1;
+    font-family: cursive;
+    font-size: .9rem;
+ }
+ .count {
+    grid-column: 1 / -1;
+    font-family: cursive;
+    font-size: .9rem;
+ }
+ 
+ .buttons {
+    grid-column: 1 / -1;
+ }
+ 
+ .buttons > * {
+    appearance: none;
+    border: none;
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: .5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: springgreen;
+    grid-gap: 0.5rem;
+ }
+ 
+ .buttons > *:hover {
+    background-color:steelblue;
+    cursor: pointer;
+ }
