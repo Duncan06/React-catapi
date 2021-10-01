@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div>
-      <CatDisplay catGaller={loadedCats} />
+      <CatDisplay catGallery={loadedCats} />
     </div>
   );
 }

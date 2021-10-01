@@ -1,3 +1,4 @@
+import Cat from "./Cat";
 import classes from "./CatDisplay.module.css";
 
 function CatDisplay(props) {
@@ -63,25 +64,16 @@ function CatDisplay(props) {
     }
   }
 
-  return (
-    <div clasName={classes.wrapper}>
-      <div className={classes.ImageDisplay}>
-        <img className={classes.img} />
-      </div>
-
-      <div className={classes.catInfo}></div>
-
-      <div className={classes.description}></div>
-
-      <div className={classes.count}></div>
-
-      <div className={classes.buttons}>
-        <button disabled onClick={decrement}>Previous</button>
-        <button>Random</button>
-        <button disabled onClick={increment}>Next</button>
-      </div>
-    </div>
-  );
+  return <div>
+    {props.catGallery.map(cat =>
+      <Cat 
+        key={cat.id}
+        id={cat.id}
+        image={cat.image}
+        breed={cat.breed}
+        alt_names={cat.alt_names}
+        description={cat.description} />)}
+  </div>
 }
 
 export default CatDisplay;
