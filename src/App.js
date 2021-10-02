@@ -1,3 +1,6 @@
+import { useState, useEffect } from "react";
+import CatDisplay from "./components/CatDisplay";
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedCats, setLoadedCats] = useState([]);

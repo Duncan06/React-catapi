@@ -2,6 +2,8 @@ import Cat from "./Cat";
 import classes from "./CatDisplay.module.css";
 
 function CatDisplay(props) {
+  let count = 0;
+
   function random() {
     fetch("https://api.thecatapi.com/v1/images/search")
       .then((response) => {
@@ -14,37 +16,21 @@ function CatDisplay(props) {
             ...data[key],
           };
 
-          catGallery.push(cat);
+          props.catGallery.push(cat);
         }
       });
   }
 
   function decrement() {
     count--;
-    images.src = CatGallery[count].url;
-    next.disabled = false;
-    if (count == 0) {
-      this.disabled = true;
-    } else {
-      this.disabled = false;
-    }
+
     updateIndex();
     catInfo();
   }
 
   function increment() {
     count++;
-    images.src = CatGallery[count].url;
 
-    if (count != 0) {
-      previous.disabled = false;
-    }
-
-    if (count == CatGallery.length - 1) {
-      this.disabled = true;
-    } else {
-      this.disabled = false;
-    }
     updateIndex();
     catInfo();
   }
@@ -52,27 +38,27 @@ function CatDisplay(props) {
   function updateIndex() {
     return (
       <p>
-        ${count + 1} / ${CatGallery.length}
+        ${count + 1} / ${props.CatGallery.length}
       </p>
     );
   }
 
   function catInfo() {
     if (
-      CatGallery[count].breeds.length != 0 &&
-      "alt_names" in CatGallery[count].breeds[0] &&
-      CatGallery[count].breeds[0].alt_names != ""
+      props.CatGallery[count].breeds.length != 0 &&
+      "alt_names" in props.CatGallery[count].breeds[0] &&
+      props.CatGallery[count].breeds[0].alt_names != ""
     ) {
       <div>
-        <p> Breed: ${CatGallery[count].breeds[0].name} </p>
-        <p> Alternative name: ${CatGallery[count].breeds[0].alt_names} </p>
-        <p> Description: ${CatGallery[count].breeds[0].description} </p>
+        <p> Breed: ${props.CatGallery[count].breeds[0].name} </p>
+        <p> Alternative name: ${props.CatGallery[count].breeds[0].alt_names} </p>
+        <p> Description: ${props.CatGallery[count].breeds[0].description} </p>
       </div>;
-    } else if (CatGallery[count].breeds.length != 0) {
+    } else if (props.CatGallery[count].breeds.length != 0) {
       <div>
-        <p> Breed: ${CatGallery[count].breeds[0].name} </p>
+        <p> Breed: ${props.CatGallery[count].breeds[0].name} </p>
         <p> Alternative name: Unavailable </p>
-        <p> Description: ${CatGallery[count].breeds[0].description} </p>
+        <p> Description: ${props.CatGallery[count].breeds[0].description} </p>
       </div>;
     } else {
       <div>
