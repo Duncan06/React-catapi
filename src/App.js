@@ -36,6 +36,8 @@ function App() {
     );
   }
 
+ 
+
   return (
     <div>
       <CatDisplay catGallery={loadedCats} />

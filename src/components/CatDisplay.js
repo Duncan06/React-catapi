@@ -38,27 +38,27 @@ function CatDisplay(props) {
   function updateIndex() {
     return (
       <p>
-        ${count + 1} / ${props.CatGallery.length}
+        ${count + 1} / ${props.catGallery.length}
       </p>
     );
   }
 
   function catInfo() {
     if (
-      props.CatGallery[count].breeds.length != 0 &&
-      "alt_names" in props.CatGallery[count].breeds[0] &&
-      props.CatGallery[count].breeds[0].alt_names != ""
+      props.catGallery[count].breeds.length != 0 &&
+      "alt_names" in props.catGallery[count].breeds[0] &&
+      props.catGallery[count].breeds[0].alt_names != ""
     ) {
       <div>
-        <p> Breed: ${props.CatGallery[count].breeds[0].name} </p>
-        <p> Alternative name: ${props.CatGallery[count].breeds[0].alt_names} </p>
-        <p> Description: ${props.CatGallery[count].breeds[0].description} </p>
+        <p> Breed: ${props.catGallery[count].breeds[0].name} </p>
+        <p> Alternative name: ${props.catGallery[count].breeds[0].alt_names} </p>
+        <p> Description: ${props.catGallery[count].breeds[0].description} </p>
       </div>;
-    } else if (props.CatGallery[count].breeds.length != 0) {
+    } else if (props.catGallery[count].breeds.length != 0) {
       <div>
-        <p> Breed: ${props.CatGallery[count].breeds[0].name} </p>
+        <p> Breed: ${props.catGallery[count].breeds[0].name} </p>
         <p> Alternative name: Unavailable </p>
-        <p> Description: ${props.CatGallery[count].breeds[0].description} </p>
+        <p> Description: ${props.catGallery[count].breeds[0].description} </p>
       </div>;
     } else {
       <div>
@@ -71,18 +71,16 @@ function CatDisplay(props) {
 
   return (
     <div>
-      {props.catGallery.map((cat) => (
-        <Cat
-          key={cat.id}
-          id={cat.id}
-          image={cat.image}
-          catInfo={catInfo()}
-          index={updateIndex()}
-          OnIncrement={increment}
-          OnDecrement={decrement}
-          OnRandom={random}
-        />
-      ))}
+      <Cat
+        key={props.catGallery[count].id}
+        id={props.catGallery[count].id}
+        image={props.catGallery[count].url}
+        catInfo={catInfo()}
+        index={updateIndex()}
+        OnIncrement={increment}
+        OnDecrement={decrement}
+        OnRandom={random}
+      />
     </div>
   );
 }
