@@ -17,13 +17,13 @@ function Cat(props) {
       </div>
 
       <div className={classes.count}>
-          <p> {props.index + 1} </p>
+          <p> {props.index + 1} / {props.arraySize} </p>
       </div>
 
       <div className={classes.buttons}>
         <button disabled={props.index === 0} onClick={props.onDecrement}>Previous</button>
         <button onClick={props.onRandom}>Random</button>
-        <button disabled>Next</button>
+        <button disabled={props.index === props.arraySize -1} onClick={props.onIncrement}>Next</button>
       </div>
     </div>
   );

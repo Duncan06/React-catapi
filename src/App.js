@@ -5,6 +5,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedCats, setLoadedCats] = useState([]);
   const [catIndex, setCatIndex] = useState(-1);
+  const [catArraySize, setCatArraySize] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
@@ -21,6 +22,7 @@ function App() {
         setLoadedCats([...loadedCats, data[0]]);
       });
       increment();
+      setCatArraySize((catArraySize) => ++catArraySize);
   }
 
   function decrement() {
@@ -30,8 +32,9 @@ function App() {
   function increment() {
     setCatIndex((catIndex) => ++catIndex);
   }
+  
 
-  if (isLoading || !loadedCats.length) {
+  if (isLoading || (loadedCats.length !== catArraySize)) {
     return (
       <section>
         <p>Loading...</p>
@@ -42,7 +45,7 @@ function App() {
   return (
     <div>
       <CatDisplay catGallery={loadedCats} onRandom={random} onIncrement={increment} 
-       onDecrement={decrement} catIndex={catIndex} />
+       onDecrement={decrement} catIndex={catIndex} arraySize={catArraySize} />
     </div>
   );
 }

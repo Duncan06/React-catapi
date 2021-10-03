@@ -1,5 +1,4 @@
 import Cat from "./Cat";
-import classes from "./CatDisplay.module.css";
 
 function CatDisplay(props) {
 
@@ -39,6 +38,7 @@ function CatDisplay(props) {
         onIncrement={props.onIncrement}
         onDecrement={props.onDecrement}
         onRandom={props.onRandom}
+        arraySize={props.arraySize}
       />
     </div>
   );
