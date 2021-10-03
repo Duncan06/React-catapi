@@ -2,7 +2,7 @@ import classes from "./Cat.module.css";
 
 function Cat(props) {
   return (
-    <div clasName={classes.wrapper}>
+    <div className={classes.wrapper}>
       <div className={classes.ImageDisplay}>
         <img className={classes.img} src={props.image}/>
       </div>
@@ -16,11 +16,13 @@ function Cat(props) {
           <p> {props.description} </p>
       </div>
 
-      <div className={classes.count}></div>
+      <div className={classes.count}>
+          <p> {props.index + 1} </p>
+      </div>
 
       <div className={classes.buttons}>
-        <button disabled>Previous</button>
-        <button>Random</button>
+        <button disabled={props.index === 0} onClick={props.onDecrement}>Previous</button>
+        <button onClick={props.onRandom}>Random</button>
         <button disabled>Next</button>
       </div>
     </div>
