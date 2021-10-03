@@ -1,4 +1,4 @@
-import Cat from "./Cat";
+import classes from "./CatDisplay.module.css";
 
 function CatDisplay(props) {
 
@@ -29,17 +29,29 @@ function CatDisplay(props) {
   }
 
   return (
-    <div>
-      <Cat
-        key={props.catGallery[props.catIndex].id}
-        image={props.catGallery[props.catIndex].url}
-        catInfo={catInfo()}
-        index={props.catIndex}
-        onIncrement={props.onIncrement}
-        onDecrement={props.onDecrement}
-        onRandom={props.onRandom}
-        arraySize={props.arraySize}
-      />
+      <div className={classes.wrapper}>
+      <div className={classes.ImageDisplay}>
+        <img className={classes.img} src={props.catGallery[props.catIndex].url}/>
+      </div>
+
+      <div className={classes.catInfo}>
+          <p> {props.breed} </p>
+          <p> {props.alt_names} </p>
+      </div>
+
+      <div className={classes.description}>
+          <p> {props.description} </p>
+      </div>
+
+      <div className={classes.count}>
+          <p> {props.catIndex + 1} / {props.arraySize} </p>
+      </div>
+
+      <div className={classes.buttons}>
+        <button disabled={props.catIndex === 0} onClick={props.onDecrement}>Previous</button>
+        <button onClick={props.onRandom}>Random</button>
+        <button disabled={props.catIndex === props.arraySize -1} onClick={props.onIncrement}>Next</button>
+      </div>
     </div>
   );
 }
