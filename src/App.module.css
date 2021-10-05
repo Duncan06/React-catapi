@@ -1,0 +1,11 @@
+.wrapper {
+    display: grid;
+    place-items: center;
+    width: 400px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr .1fr .1fr  .1fr .1fr;
+    border: 10px solid teal;
+    background-color: paleturquoise;
+    margin-left: 15%;
+    box-shadow: 0 0 13px rgba(0, 0, 0, .5);
+ }

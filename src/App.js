@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import CatDisplay from "./components/CatDisplay";
+import classes from "./App.module.css";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,9 +37,9 @@ function App() {
 
   if (isLoading || (loadedCats.length !== catArraySize)) {
     return (
-      <section>
+      <div className={classes.wrapper}>
         <p>Loading...</p>
-      </section>
+      </div>
     );
   }
 
