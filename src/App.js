@@ -10,8 +10,19 @@ function App() {
 
   useEffect(() => {
     setIsLoading(true);
+
+    const item = localStorage.getItem("catArray");
+
+    if (item) {
+      setLoadedCats(JSON.parse(item));
+    }
+    
     random();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("catArray", JSON.stringify(loadedCats));
+  })
 
   function random() {
     fetch("https://api.thecatapi.com/v1/images/search")
@@ -22,8 +33,8 @@ function App() {
         setIsLoading(false);
         setLoadedCats([...loadedCats, data[0]]);
       });
-      increment();
-      setCatArraySize((catArraySize) => ++catArraySize);
+    increment();
+    setCatArraySize((catArraySize) => ++catArraySize);
   }
 
   function decrement() {
@@ -33,9 +44,8 @@ function App() {
   function increment() {
     setCatIndex((catIndex) => ++catIndex);
   }
-  
 
-  if (isLoading || (loadedCats.length !== catArraySize)) {
+  if (isLoading || loadedCats.length !== catArraySize) {
     return (
       <div className={classes.wrapper}>
         <p>Loading...</p>
@@ -45,8 +55,14 @@ function App() {
 
   return (
     <div>
-      <CatDisplay catGallery={loadedCats} onRandom={random} onIncrement={increment} 
-       onDecrement={decrement} catIndex={catIndex} arraySize={catArraySize} />
+      <CatDisplay
+        catGallery={loadedCats}
+        onRandom={random}
+        onIncrement={increment}
+        onDecrement={decrement}
+        catIndex={catIndex}
+        arraySize={catArraySize}
+      />
     </div>
   );
 }
