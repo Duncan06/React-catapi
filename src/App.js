@@ -4,25 +4,19 @@ import classes from "./App.module.css";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [loadedCats, setLoadedCats] = useState([]);
+  const item = localStorage.getItem("catArray");
+  const [loadedCats, setLoadedCats] = useState(item ? JSON.parse(item) : []);
   const [catIndex, setCatIndex] = useState(-1);
-  const [catArraySize, setCatArraySize] = useState(0);
+  const [catArraySize, setCatArraySize] = useState(item ? loadedCats.length : 0);
 
   useEffect(() => {
     setIsLoading(true);
-
-    const item = localStorage.getItem("catArray");
-
-    if (item) {
-      setLoadedCats(JSON.parse(item));
-    }
-    
     random();
   }, []);
 
   useEffect(() => {
     localStorage.setItem("catArray", JSON.stringify(loadedCats));
-  })
+  });
 
   function random() {
     fetch("https://api.thecatapi.com/v1/images/search")
