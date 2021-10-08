@@ -9,7 +9,7 @@ function CatDisplay(props) {
       props.catGallery[props.catIndex].breeds[0].alt_names != ""
     ) { 
       return (
-        <div className={classes.catInfo}> 
+        <div className={classes.infoContainer}> 
           <div className={classes.catInfo}>  
             <p> Breed: {props.catGallery[props.catIndex].breeds[0].name} </p>
             <p> Alternative name: {props.catGallery[props.catIndex].breeds[0].alt_names} </p>

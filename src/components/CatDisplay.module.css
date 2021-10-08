@@ -10,7 +10,7 @@
     box-shadow: 0 0 13px rgba(0, 0, 0, .5);
  }
  
- .ImageDisplay, .catInfo .infoContainer {
+ .ImageDisplay, .catInfo {
     display: flex;
     grid-column: 1 / -1;
  }
@@ -31,8 +31,10 @@
  }
  
  .infoContainer {
-    flex-direction: column;
+    display: grid;
+    grid-column: 1 / -1;
  }
+ 
  .catInfo {
     grid-column: 1 / -1;
     font-family: cursive;
