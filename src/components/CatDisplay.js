@@ -21,7 +21,7 @@ function CatDisplay(props) {
       )
     } else if (props.catGallery[props.catIndex].breeds.length != 0) {
       return (
-        <div className={classes.catInfo}>
+        <div className={classes.infoContainer}>
           <div className={classes.catInfo}>
             <p> Breed: {props.catGallery[props.catIndex].breeds[0].name} </p>
             <p> Alternative name: Unavailable </p>
@@ -34,7 +34,7 @@ function CatDisplay(props) {
       )
     } else {
       return (
-        <div className={classes.catInfo}>
+        <div className={classes.infoContainer}>
           <div className={classes.catInfo}>
             <p> Breed: Unavailable </p>
             <p> Alternative name: Unavailable </p>
