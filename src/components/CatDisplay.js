@@ -65,6 +65,10 @@ function CatDisplay(props) {
         <button onClick={props.onRandom}>Random</button>
         <button disabled={props.catIndex === props.arraySize -1} onClick={props.onIncrement}>Next</button>
       </div>
+
+      <div className={classes.buttons}>
+        <button onClick={props.onReset}>Reset list</button>
+      </div>
     </div>
   );
 }

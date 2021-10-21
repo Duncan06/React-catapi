@@ -39,6 +39,10 @@ function App() {
     setCatIndex((catIndex) => ++catIndex);
   }
 
+  function reset() {
+    localStorage.removeItem("catArray");
+  }
+
   if (isLoading || loadedCats.length !== catArraySize) {
     return (
       <div className={classes.wrapper}>
@@ -56,6 +60,7 @@ function App() {
         onDecrement={decrement}
         catIndex={catIndex}
         arraySize={catArraySize}
+        onReset={reset}
       />
     </div>
   );
