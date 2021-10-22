@@ -41,6 +41,7 @@ function App() {
 
   function reset() {
     localStorage.removeItem("catArray");
+    window.location.reload();
   }
 
   if (isLoading || loadedCats.length !== catArraySize) {
