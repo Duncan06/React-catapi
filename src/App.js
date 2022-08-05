@@ -7,7 +7,9 @@ function App() {
   const item = localStorage.getItem("catArray");
   const [loadedCats, setLoadedCats] = useState(item ? JSON.parse(item) : []);
   const [catIndex, setCatIndex] = useState(-1);
-  const [catArraySize, setCatArraySize] = useState(item ? loadedCats.length : 0);
+  const [catArraySize, setCatArraySize] = useState(
+    item ? loadedCats.length : 0
+  );
 
   useEffect(() => {
     setIsLoading(true);
@@ -16,19 +18,25 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("catArray", JSON.stringify(loadedCats));
+    console.log(loadedCats);
   });
 
   function random() {
-    fetch("https://api.thecatapi.com/v1/images/search")
+    callApi("https://api.thecatapi.com/v1/images/search", loadedCats);
+    increment();
+    setCatArraySize((catArraySize) => ++catArraySize);
+  }
+
+  // Provide site and array to fill
+  function callApi(site, fillArray) {
+    fetch(site)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         setIsLoading(false);
-        setLoadedCats([...loadedCats, data[0]]);
+        setLoadedCats([...fillArray, data[0]]);
       });
-    increment();
-    setCatArraySize((catArraySize) => ++catArraySize);
   }
 
   function decrement() {

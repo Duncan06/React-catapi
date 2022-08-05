@@ -4,6 +4,7 @@ function CatDisplay(props) {
 
   function catInfo() {
     if (
+      props.catGallery[props.catIndex].breeds &&
       props.catGallery[props.catIndex].breeds.length != 0 &&
       "alt_names" in props.catGallery[props.catIndex].breeds[0] &&
       props.catGallery[props.catIndex].breeds[0].alt_names != ""
@@ -19,7 +20,7 @@ function CatDisplay(props) {
           </div>
         </div>
       )
-    } else if (props.catGallery[props.catIndex].breeds.length != 0) {
+    } else if (props.catGallery[props.catIndex].breeds && props.catGallery[props.catIndex].breeds.length != 0) {
       return (
         <div className={classes.infoContainer}>
           <div className={classes.catInfo}>
